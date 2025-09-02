@@ -8,11 +8,11 @@ import CustomerDetailPage from "./pages/CustomerDetailPage";
 import "./App.css";
 
 function App() {
-  // ✅ Define refs
+
   const logoRef = useRef(null);
   const navRef = useRef(null);
 
-  // ✅ Get location from React Router
+
   const location = useLocation();
 
   return (

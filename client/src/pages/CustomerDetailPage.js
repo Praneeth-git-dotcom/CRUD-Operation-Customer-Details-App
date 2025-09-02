@@ -104,30 +104,30 @@ function AddressManager({ customerId, addresses = [], onChange }){
               <td>{a.state}</td>
               <td>{a.pin_code}</td>
               <td>
-                <button
-  className="btn btn-warning btn-sm me-2"
-  onClick={() => {
-    // Ask which field to edit
-    const field = prompt(
-      'Enter the field you want to edit (e.g., address_details, city, pincode):'
-    );
+                    <button
+      className="btn btn-warning btn-sm me-2"
+      onClick={() => {
 
-    if (field && a[field] !== undefined) {
-      // Show old value and ask for new one
-      const newValue = prompt(`Edit ${field}`, a[field]);
+        const field = prompt(
+          'Enter the field you want to edit (e.g., address_details, city, pincode):'
+        );
 
-      if (newValue !== null) {
-        api
-          .put(`/addresses/${a.id}`, { [field]: newValue })
-          .then(() => onChange());
-      }
-    } else {
-      alert("Invalid field name or field doesn't exist!");
-    }
-  }}
->
-  Edit
-</button>
+        if (field && a[field] !== undefined) {
+
+          const newValue = prompt(`Edit ${field}`, a[field]);
+
+          if (newValue !== null) {
+            api
+              .put(`/addresses/${a.id}`, { [field]: newValue })
+              .then(() => onChange());
+          }
+        } else {
+          alert("Invalid field name or field doesn't exist!");
+        }
+      }}
+    >
+      Edit
+    </button>
 
                 <button
                   className="btn btn-danger btn-sm"

@@ -19,7 +19,7 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
   console.log('Connected to SQLite database.');
 });
 
-// Initialize tables if not exist
+
 const initSql = `
 CREATE TABLE IF NOT EXISTS customers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +43,6 @@ db.exec(initSql, (err) => {
   if (err) console.error('DB init error:', err);
 });
 
-// Helper: run SQL returning promise
 function runAsync(sql, params = []) {
   return new Promise((resolve, reject) => {
     db.run(sql, params, function (err) {
